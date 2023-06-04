@@ -2,6 +2,8 @@ import guidance
 
 def genCharector(description):
     genChar = guidance("""The following is a character profile for an RPG game in JSON format.
+    The range of values for health is 0-100.
+    The range of values for attack, defense, spattack, and spdefense is 0-25 .
     ```json
     {
         "description": "{{description}}",
@@ -10,7 +12,7 @@ def genCharector(description):
         "defense": {{gen 'defense'  stop=','}},
         "health": {{gen 'health'  stop=','}},
         "spattack": {{gen 'spattack'  stop=','}},
-        "spdefense": {{gen 'spdefense'  stop=','}},
+        "spdefense": {{gen 'spdefense'  stop='\\n'}},
         "items": [{{#geneach 'items' num_iterations=3}}
             "{{gen 'this'}}",{{/geneach}}
         ]
