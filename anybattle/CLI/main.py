@@ -1,5 +1,6 @@
 from rich import print
 from ..engine import genCharacter, genNemesis
+from .format import printCharacterStats
 import guidance
 
 def cli():
@@ -11,10 +12,13 @@ def cli():
     character = input(">>>")
 
     char_prof = genCharacter(description=character)
-    print(char_prof)
+    print("[bold red]Your character stats:[/bold red]")
+    printCharacterStats(char_prof)
 
+    print("[bold red]Your Nemesis:[/bold red]")
     nemesis = genNemesis(description=character)
     print(nemesis)
 
+    print("[bold red]Your Nemesis' stats:[/bold red]")
     nemesis_prof = genCharacter(description=nemesis)
-    print(nemesis_prof)
+    printCharacterStats(nemesis_prof)
