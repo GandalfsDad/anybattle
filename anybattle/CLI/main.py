@@ -1,10 +1,11 @@
 from rich import print
-from ..engine import genCharacter, genNemesis
-from .format import printCharacterStats
+from ..engine import genCharacter, genNemesis, genBattleScene
+from .format import printCharacterStats, printBattleScene
 import guidance
 
 def cli():
     guidance.llm = guidance.llms.OpenAI('text-curie-001')
+    guidance.llms.OpenAI.cache.clear()
 
     print("[bold red]Lets fight!!![/bold red]")
     example_character = "A red wizard wielding a sword and a shield."
@@ -22,3 +23,6 @@ def cli():
     print("[bold red]Your Nemesis' stats:[/bold red]")
     nemesis_prof = genCharacter(description=nemesis)
     printCharacterStats(nemesis_prof)
+
+    scene = genBattleScene(character=character, nemesis=nemesis)
+    printBattleScene(scene)
