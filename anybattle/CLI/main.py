@@ -1,5 +1,5 @@
 from rich import print
-from ..engine import genCharacter, genNemesis, genBattleScene
+from ..engine import genCharacter, genNemesis, genBattleScene, genMoveResults, genNemesisMove
 from .format import printCharacterStats, printBattleScene
 import guidance
 
@@ -26,3 +26,14 @@ def cli():
 
     scene = genBattleScene(character=character, nemesis=nemesis)
     printBattleScene(scene)
+
+    while True:
+        print("[bold green] describe your move.[/bold green]")
+        move = input(">>>")
+        impact = genMoveResults(move=move, character=character, nemesis=nemesis)
+        print(f"Your Move: {impact}")
+
+        nemesis_move = genNemesisMove(move=move, character=character, nemesis=nemesis)
+        print(f"Nemesis' Move: {nemesis_move}")
+        nemesis_impact = genMoveResults(move=nemesis_move, character=nemesis, nemesis=character)
+        print(f"Nemesis' Move Impact: {nemesis_impact}")
