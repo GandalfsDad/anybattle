@@ -1,3 +1,3 @@
-from .charector import genCharector, genNemesis
+from .character import genCharacter, genNemesis
 
-__all__ = ['genCharector', 'genNemesis']
+__all__ = ['genCharacter', 'genNemesis']

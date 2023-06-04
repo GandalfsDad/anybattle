@@ -1,6 +1,6 @@
 import guidance
 
-def genCharector(description):
+def genCharacter(description):
     genChar = guidance("""The following is a character profile for an RPG game in JSON format.
     The range of values for health is 0-100.
     The range of values for attack, defense, spattack, and spdefense is 0-25 .
@@ -22,7 +22,7 @@ def genCharector(description):
     return {k:V for k,V in result.variables().items() if k != 'llm'}
 
 def genNemesis(description):
-    genNem = guidance("""The following is a description of an RPG charector:
+    genNem = guidance("""The following is a description of an RPG character:
     {{description}}
     Here is a description of an equally powerful nemesis:
     {{gen 'nemesis'}}
